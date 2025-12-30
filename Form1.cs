@@ -66,7 +66,7 @@ namespace Tic_Tac_Toe_Game
                 }
 
             }
-            GameStatus.GameOver = false;
+
 
             return false;
         }
@@ -101,6 +101,8 @@ namespace Tic_Tac_Toe_Game
         void CheckWinner()
         {
 
+            if(GameStatus.GameOver)
+                return;
 
             //Check Rows
             //Check Row 1
@@ -168,13 +170,13 @@ namespace Tic_Tac_Toe_Game
             }
             else
             {
-                               MessageBox.Show("Wrong Choice", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         MessageBox.Show("Wrong Choice", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if(GameStatus.PlayCount == 9)
+            if(GameStatus.PlayCount == 9 && !GameStatus.GameOver)
             {
-                GameStatus.GameOver = true;
                 GameStatus.Winner = enWinner.Draw;
+                GameStatus.GameOver = true;
                 EndGame();
             }
 
@@ -185,51 +187,12 @@ namespace Tic_Tac_Toe_Game
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_Click(object sender, EventArgs e)
         {
-            ChangeImage(button1);
+            ChangeImage( (Button) sender);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ChangeImage(button2);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ChangeImage(button3);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ChangeImage(button4);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            ChangeImage(button5);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            ChangeImage(button6);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            ChangeImage(button7);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            ChangeImage(button8);
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            ChangeImage(button9);
-        }
-
+   
         private void RestButton(Button btn)
         {
             btn.Image = Resources.question_mark_96;
